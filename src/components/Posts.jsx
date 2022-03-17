@@ -8,8 +8,8 @@ const fetchPosts = () => axios
 const fetchComments = () => axios
 .get("https://jsonplaceholder.typicode.com/comments");
 
-
 const Posts = () => {
+
   const onSuccess = (data) => {
     // console.log(data)
     console.log('perform side effect after data fetching')
@@ -33,6 +33,7 @@ const Posts = () => {
     .map(c => c.name)
   }); 
 
+
   if (isLoading || isFetching) return <h2>loading...</h2>;
   if (isError) return <h2>{error.message}</h2>;
   return (
@@ -40,9 +41,8 @@ const Posts = () => {
       <h2>qute posts</h2>
       { posts?.map(name => <div key={name}>{name}</div>)}
 
-
       <div style={{ marginBottom: '50px'}}></div>
-
+    
       <h2>Comments</h2>
       <button onClick={refetch}>fetch comments</button>
       { comments?.map(name=> <div key={name}>{name}</div>)}

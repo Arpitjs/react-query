@@ -1,11 +1,12 @@
 import { useQuery } from "react-query";
-import axios from "axios";
+import { request } from "../axios";
 
-const fetchSuperHeroes = () =>
-  axios.get("https://jsonplaceholder.typicode.com/todos");
+const fetchSuperHeroes = () => {
+  return request({ url: '/todos', method: 'get' })
+}
 
 const useTodos = (onSuccess, onError) => {
-  return useQuery("super-heroes", fetchSuperHeroes, {
+  return useQuery("todos", fetchSuperHeroes, {
     onSuccess,
     onError,
   });
